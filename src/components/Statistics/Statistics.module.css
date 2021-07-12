@@ -1,0 +1,17 @@
+.title {
+  text-align: center;
+  font-size: 30px;
+  margin-top: o;
+  margin-bottom: 40px;
+}
+
+.list {
+  margin-left: 50px;
+  margin-top: 0;
+  margin-bottom: 40px;
+}
+
+.statistics {
+  font-size: 20px;
+  font-weight: 700;
+}

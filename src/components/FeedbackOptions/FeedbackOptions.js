@@ -2,19 +2,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+// Стили
+import styles from './FeedbackOptions.module.css';
+
 const FeedbackOptions = ({
   onClickButtonGood,
   onClickButtonNeutral,
   onClickButtonBad,
 }) => (
-  <ul>
-    <button type="button" onClick={onClickButtonGood}>
+  <ul className={styles.list}>
+    <button className={styles.button} type="button" onClick={onClickButtonGood}>
       Good
     </button>
-    <button type="button" onClick={onClickButtonNeutral}>
+    <button
+      className={styles.button}
+      type="button"
+      onClick={onClickButtonNeutral}
+    >
       Neutral
     </button>
-    <button type="button" onClick={onClickButtonBad}>
+    <button className={styles.button} type="button" onClick={onClickButtonBad}>
       Bad
     </button>
   </ul>

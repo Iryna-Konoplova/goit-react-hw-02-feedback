@@ -2,9 +2,9 @@
 import React, { Component } from 'react';
 
 // Компоненты
-import SectionTitle from './components/SectionTitle/SectionTitle';
-import FeedbackOptions from './components/FeedbackOptions/FeedbackOptions';
-import Statistics from './components/Statistics/Statistics';
+import SectionTitle from './components/SectionTitle';
+import FeedbackOptions from './components/FeedbackOptions';
+import Statistics from './components/Statistics';
 
 class App extends Component {
   state = {
@@ -31,14 +31,21 @@ class App extends Component {
     }));
   };
 
-  // countTotalFeedback = () => {
-  //   const total = this.state.good + this.state.neutral + this.state.bad;
-  // }
+  countTotalFeedback = () => {
+    const total = this.state.good + this.state.neutral + this.state.bad;
+    return total;
+  };
+
+  countPositiveFeedbackPercentage = total => {
+    const positivePercentage = (this.state.good * 100) / total;
+    return positivePercentage;
+  };
 
   render() {
-    const countTotalFeedback =
-      this.state.good + this.state.neutral + this.state.bad;
-    // const countPositiveFeedbackPercentage = (this.state.good * 100) / countTotalFeedback;
+    const total = this.countTotalFeedback();
+    const positivePercentage = Math.round(
+      this.countPositiveFeedbackPercentage(total),
+    );
 
     return (
       <SectionTitle>
@@ -51,18 +58,12 @@ class App extends Component {
           good={this.state.good}
           neutral={this.state.neutral}
           bad={this.state.bad}
-          total={countTotalFeedback}
-          // positivePercentage={countPositiveFeedbackPercentage }
+          total={total}
+          positivePercentage={positivePercentage}
         />
       </SectionTitle>
     );
   }
 }
-
-// const App = () => {
-//     return (
-//         <FeedbackOptions />
-//     );
-// };
 
 export default App;

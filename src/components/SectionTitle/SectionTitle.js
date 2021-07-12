@@ -1,9 +1,12 @@
 // Модули
 import React from 'react';
 
+// Стили
+import styles from './SectionTitle.module.css';
+
 const SectionTitle = ({ children }) => (
-  <div>
-    <h2>Pleas leave feedback</h2>
+  <div className={styles.section}>
+    <h2 className={styles.title}>Pleas leave feedback</h2>
     {children}
   </div>
 );
