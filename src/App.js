@@ -13,27 +13,16 @@ class App extends Component {
     bad: 0,
   };
 
-  onClickButtonGood = () => {
-    this.setState(prevState => ({
-      good: prevState.good + 1,
-    }));
-  };
+  onLeaveFeedback = evt => {
+    const key = evt.target.textContent.toLowerCase();
 
-  onClickButtonNeutral = () => {
     this.setState(prevState => ({
-      neutral: prevState.neutral + 1,
-    }));
-  };
-
-  onClickButtonBad = () => {
-    this.setState(prevState => ({
-      bad: prevState.bad + 1,
+      [key]: prevState[key] + 1,
     }));
   };
 
   countTotalFeedback = () => {
-    const total = this.state.good + this.state.neutral + this.state.bad;
-    return total;
+    return Object.values(this.state).reduce((acc, value) => (acc += value), 0);
   };
 
   countPositiveFeedbackPercentage = total => {
@@ -50,9 +39,8 @@ class App extends Component {
     return (
       <SectionTitle>
         <FeedbackOptions
-          onClickButtonGood={this.onClickButtonGood}
-          onClickButtonNeutral={this.onClickButtonNeutral}
-          onClickButtonBad={this.onClickButtonBad}
+          options={this.state}
+          onLeaveFeedback={this.onLeaveFeedback}
         />
         <Statistics
           good={this.state.good}
